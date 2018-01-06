@@ -1,0 +1,13 @@
+version: '3'
+services:
+  node:
+    build:
+      context: .
+      dockerfile: node.dockerfile
+    command: npm start
+    volumes:
+      - ".:/dapp"
+  testrpc:
+    image: trufflesuite/ganache-cli:latest
+    ports:
+      - "8545:8545"

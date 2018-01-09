@@ -7,7 +7,19 @@ services:
     command: npm start
     volumes:
       - ".:/dapp"
+
+  explorer:
+    build:
+      context: .
+      dockerfile: explorer.dockerfile
+    command: npm start
+    volumes:
+      - "./explorer:/app"
+    ports:
+      - "8000:8000"
+
   testrpc:
     image: trufflesuite/ganache-cli:latest
+    command: ganache-cli --debug
     ports:
       - "8545:8545"
